@@ -1,0 +1,4 @@
+import { get, post, put, DELETE } from '@/plugin/utils/request'
+
+// 获取虚拟主机列表
+export const getEcsList = (page,pageSize) => get("/api/v1/aliyun/ecs", page,pageSize);
