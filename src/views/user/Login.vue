@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="loginBox">
-    <h3 class="login-title"><img src="../../assets/logo.jpg" width="90px" height="80px"/></h3>
+ <h3 class="login-title"><img src="../../assets/logo.jpg" width="90px" height="80px"/></h3>
     <a-tabs default-active-key="1" @change="callback">
 
       <a-tab-pane key="1" tab="账号登录">
@@ -28,7 +28,6 @@
             </a-checkbox>
             <a class="login-form-forgot" href="/user/forgotPwd">忘记密码</a>
             <a-button type="primary" html-type="submit" class="login-form-button">登录</a-button>
-            <!--立即<a href="/user/register">注册!</a>-->
         </a-form-item>
       </a-form>
 
@@ -56,10 +55,6 @@ export default {
   watch: {
     $route: {
       handler: function (route) {
-        //console.log(route)
-        //this.redirect = route.query.redirect;
-        //this.redirect = route.query && route.query.redirect;
-        //console.log("路由：", this.redirect)
         return ''
       },
       immediate: true
@@ -73,8 +68,6 @@ export default {
       e.preventDefault();
       this.form.validateFields(async (err, values) => {
         if (!err) {
-          // console.log('Received values of form: ', values);
-          // Received values of form:  {userName: "1", password: "1", remember: false
           const resp = await login(values);
           if (resp.errcode === 0) {
             this.$msgsuccess(resp.msg);
@@ -113,7 +106,6 @@ export default {
         const resp = dingCode(temp).then((_data) => {
           this.widthVar = "500px";
           if (_data.errcode === 0){
-            //this.$cookies.set('email',values.username)
             this.$cookies.set("token", _data.token)
             localStorage.setItem("onLine", 1)
             localStorage.setItem("token", _data.token)

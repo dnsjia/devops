@@ -1,5 +1,6 @@
 <template>
   <div id="ticket">
+<!--  <div style="background-color: #F5F5F5; padding: 24px;">-->
     <a-page-header :ghost="false" title="返回" sub-title="工单详情" @back="() => $router.go(-1)">
       <a-skeleton active :loading="ticketLoading">
       <a-descriptions size="small" :column="3">

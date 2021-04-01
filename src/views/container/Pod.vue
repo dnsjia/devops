@@ -69,18 +69,21 @@
     </template>
 
 
+
+
+
   <a slot="name" slot-scope="text">{{ text }}</a>
   <a-tag color="#87d068" slot="status" slot-scope="status" v-if="status=='Running'">{{status}}</a-tag>
-  <a-tag color="#108ee9" slot="status" slot-scope="status" v-else>{{status}}</a-tag>
+  <a-tag color="#108ee9" slot="status" slot-scope="status" v-else-if="status=='Pending'">{{status}}</a-tag>
+  <a-tag color="#f50" slot="status" slot-scope="status" v-else>{{status}}</a-tag>
 
   <span slot="create_time" slot-scope="create_time">{{create_time | fmtTime}}</span>
 
   <span slot="action" slot-scope="action, id">
-<!--    <a-button type="primary">查看</a-button>-->
     <a-divider type="vertical"/>
     <a-button type="danger" @click="podDeleteConfirm({name: id.name, namespace: id.namespace})">重启</a-button>
-<!--      <router-link :to="'deploy/detail?id=' + id"><span>查看</span></router-link>-->
-<!--    k8s/pod?name=manage-test-6cdb85d8c9-k4djm&namespace=feiba-->
+    <a-divider type="vertical"/>
+    <a-button type="primary" @click="podLogs({name: id.name, namespace: id.namespace})">日志</a-button>
       <a-divider type="vertical"/>
   </span>
 
@@ -265,6 +268,11 @@ name: "Pod",
         },
         class: 'test',
       });
+    },
+    // 查看pod日志
+    podLogs(params){
+      let routeData = this.$router.resolve({name: 'PodLogs', query: {pod_name: params.name, namespace: params.namespace}})
+      window.open(routeData.href, '_blank')
     }
   },
   created() {

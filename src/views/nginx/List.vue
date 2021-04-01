@@ -32,7 +32,7 @@
                       <a-input placeholder="flyby-hotel" v-decorator="[
                      'upstream_name',
                         {
-                          rules: [{ required: true, message: '请输入应用名称', whitespace: true }],
+                          rules: [{ required: true, message: '请输入应用名称', whitespace: true },{pattern: /(^[A-Za-z0-9_|-]+$)/, message: '不能包含中文、特殊符号等'}],
                         },
                       ]"
                       />
@@ -166,7 +166,6 @@ const columns = [
         dataIndex: 'remarks',
         key: 'remarks',
     },
-
     {
         title: '创建人',
         dataIndex: 'creator_name',

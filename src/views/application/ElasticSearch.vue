@@ -14,7 +14,6 @@
 
     <a-form-model-item label="索引名称:" prop="EsIndex">
       <a-select v-model="form.EsIndex" placeholder="选择索引名称" show-search :filter-option="filterOption" style="width: 180px;">
-
               <a-select-option v-for="indexs in esIndesList"
                                :key="indexs.value"
                                :value="indexs.index_name">{{ indexs.index_name }}
@@ -37,11 +36,8 @@
     <a-button type="primary" @click="handleJson">验证JSON</a-button>
       <a-divider type="vertical" />
     <a-button type="danger" @click="downToJson"><a-icon type="cloud-download" /> 下载查询结果</a-button>
-<!--      <a-divider type="vertical" />-->
-<!--    <a-button type="danger" @click="downToExcel">导出结果Excel</a-button>-->
   <br><br>
     <a-tabs default-active-key="1">
-<!--    <a-tabs default-active-key="1" @change="callback">-->
       <a-tab-pane key="1" tab="查询">
 
        <a-form-model :model="form" ref="ruleForm" :rules="rules" :label-width="130">
@@ -60,7 +56,6 @@
         </a-form-model>
         <p style="color: #f10f32">温馨提示：查询时请合理控制返回条数，条数过大可能会影响线上集群不稳定。</p>
       </a-tab-pane>
-
 
     </a-tabs>
   </div>
@@ -85,8 +80,6 @@ import {search, getEsIndex} from '@/api/elasticsearch'
       return {
         rules: {
           tempSource: [
-             // { required: true, message: '必填项', trigger: 'blur' },
-             //  { min: 5, max: 112, message: '标题长度范围5-112', trigger: 'blur' },
               { validator:checkObj, trigger: 'blur' }
             ],
           EsMethods: [{ required: true, message: '请选择请求方法', trigger: 'blur' }],

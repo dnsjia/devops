@@ -1,7 +1,7 @@
 <template>
   <a-layout id="layout" style="min-height: 100vh">
     <a-layout-sider class="left-memu" v-model="collapsed" collapsible>
-      <div class="logo" title="运维平台">{{collapsed?'': '飞巴运维平台'}}</div>
+      <div class="logo" title="运维平台">{{collapsed?'': + this.ENV.Title}}</div>
       <a-menu theme="dark" :defaultOpenKeys="openKeys" :default-selected-keys="['1']" mode="inline">
         <a-menu-item key="1">
             <a-icon type="dashboard"/>
@@ -108,7 +108,6 @@
     },
     watch: {
       $route(){
-        //console.log(this.$route.meta)
       }
     },
     created() {
@@ -137,7 +136,5 @@
     font-weight: bold;
     margin: 16px;
 }
-
-
 
 </style>

@@ -22,7 +22,6 @@
               <p>删除该用户后将无法登录</p>
             </template>
             <a :disabled="is_active.is_staff">删除</a>
-    <!--        <a @click="removeUser(is_active.user_id)" :disabled="is_active.is_staff">删除</a>-->
           </a-popconfirm>
           <a-divider type="vertical"/>
           <a v-if="is_active.is_active" @click="disableUser(is_active.user_id, false)" :disabled="is_active.is_staff">禁用</a>
@@ -238,7 +237,6 @@ export default {
       this.userInfo = role;
       // 展示对话框之前，获取所有角色列表
       rolesGet().then((res => {
-        //console.log(res, 111111);
         this.rolesList = res;
       }))
     }

@@ -10,21 +10,14 @@ import './plugin/mixin'
 // es6
 import "babel-polyfill"
 
-import env from '@/store/env.js'
-Vue.prototype.ENV = env
-
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
-
-// Vue.use(ElementUI);
-
 // filter过滤器
 import filter from './plugin/filter'
 
 Object.keys(filter).forEach(filterName => {
     Vue.filter(filterName, filter[filterName])
 })
-
+import env from '@/store/env.js'
+Vue.prototype.$ENV = env
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -41,7 +34,6 @@ Vue.use(VueCookies);
 Vue.config.productionTip = false;
 // 允许跨域获取Cookie
 axios.defaults.withCredentials = true
-
 new Vue({
     router,
     render: h => h(App)

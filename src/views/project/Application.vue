@@ -22,7 +22,6 @@
 
       </div>
 
-
       <a-table :pagination="false" @showSizeChange="onShowSizeChange" :columns="columns" :dataSource="data" rowKey="id">
 
         <span slot="project_env" slot-scope="project_env">

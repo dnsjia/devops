@@ -33,7 +33,6 @@
     <span slot="customTitle"><a-ion type="smile-o"/> 外网端口</span>
 
         <span slot="action" slot-scope="id">
-<!--           <a-button type="primary" @click="editVirtualHostModel(id)">编辑</a-button>-->
 
           <a-divider type="vertical"/>
           <a-button type="danger" @click="delGrayRule(id)">删除</a-button>
@@ -171,9 +170,9 @@ export default {
       if (value == "IP"){
         this.grayRuleTips = "示例：223.5.5.5"
       }else if (value == "Cookie"){
-        this.grayRuleTips = "示例：Code=xiaoFeiZhu"
+        this.grayRuleTips = "示例：Code=pigs"
       }else if (value == "UserAgent"){
-        this.grayRuleTips = "示例：abtest"
+        this.grayRuleTips = "示例：pigs"
       }
     },
     grayDomainHandleChange(value){

@@ -2,7 +2,7 @@
 <div>
   <a-layout id="layout" style="min-height: 100vh">
     <a-layout-sider v-model="collapsed" collapsible>
-      <div class="logo"  title="运维平台">{{ collapsed ? '' : '小飞猪运维平台' }}</div>
+      <div class="logo"  title="运维平台">{{ collapsed ? '' : + this.ENV.Title }}</div>
         <a-menu theme="dark" :defaultOpenKeys="openKeys" :default-selected-keys="selectedKeys" mode="inline">
 
         <a-menu-item key="dashboard">
@@ -24,7 +24,6 @@
               <a-icon v-if="subItem.icon" :type="subItem.icon"/>
                 <span>{{subItem.name}}</span>
               </router-link>
-<!--            </template>-->
           </a-menu-item>
         <!--没有二级菜单的一级菜单-->
         </a-sub-menu>
@@ -168,7 +167,6 @@ export default {
       localStorage.removeItem('token')
       localStorage.removeItem('onLine') // 登录状态
       sessionStorage.removeItem('avatar')
-      //localStorage.removeItem("email")
       this.$router.push({name: 'Login'});
     },
     resetShowModel(){
@@ -209,8 +207,7 @@ export default {
     getMenuTreeList() {
       MenuTree().then((res) => {
         this.menuItems = res;
-
-      });
+      })
     }
   },
   computed: {
@@ -225,7 +222,6 @@ export default {
 #layout .logo {
   height: 32px;
   line-height: 32px;
-  /*background: rgba(255, 255, 255, 0.2);*/
   margin: 16px;
   text-align: center;
   letter-spacing: 8px;

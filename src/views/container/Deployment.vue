@@ -12,14 +12,11 @@
               {{item.name}}
             </a-select-option>
           </a-select>
-
           <a-button type="primary" @click="filterByNamespaceOnDeployment" style="margin-left: 1%" :loading="filterNamespaceOnDeploymentLoading">筛选</a-button>
-
         </a-form-item>
       </a-form>
     <a-table :columns="deploymentColumns" :data-source="deploymentList" :pagination="false" @showSizeChange="onShowSizeChangeDeployment" >
       <a slot="name" slot-scope="text">{{ text }}</a>
-
       <span slot="labels" slot-scope="text, labels" >
         <a-tag color="#87d068" v-for="(item,key,index) in labels.labels" :key="index">{{key}}:{{item}}</a-tag>
       </span>
@@ -32,7 +29,6 @@
       </span>
 
       <span slot="create_time" slot-scope="create_time">{{create_time | fmtTime}}</span>
-
 
     </a-table>
       <div class="float-right" style="padding: 10px 0;">

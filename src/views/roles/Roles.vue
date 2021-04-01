@@ -10,7 +10,6 @@
       </a-row>
       <!--角色列表-->
       <a-table :columns="columns" :data-source="rolesList" :rowKey="rolesList.id">
-
       <p slot="expandedRowRender" slot-scope="action" style="margin: 0">
           <a-row :class="['bdbottom', i1 === 0 ? 'bdtop' : '', 'vcenter']" v-for="(item1, i1) in action.permissions" :key="item1.id" >
             <!-- 一级权限 -->
@@ -38,7 +37,6 @@
           <a-button type="primary" icon="edit" @click="showEditRoleModal(id)">编辑</a-button>
           <a-divider type="vertical"/>
             <a-button type="danger" icon="delete" @click="removeUserRole(id.id)">删除</a-button>
-
       </span>
       </a-table>
     </a-card>

@@ -8,3 +8,5 @@ export const namespaces = (namespace,page,pageSize) => get('/k8s/namespaces', na
 export const container = (params) => get('/k8s/pods/', params)
 //删除某个Pod
 export const podDelete = (params) => DELETE('/k8s/pod', params)
+//查看pod日志
+export const podLogs = (params) => post('/k8s/logs', params)

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter, {RouteConfig} from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
 Vue.use(VueRouter);
 
 
@@ -124,6 +123,26 @@ const routes: Array<RouteConfig> = [
                 component: () => import('@/views/container/List.vue'),
                 meta: {
                     title: "工作负载",
+                    module: "容器管理"
+                },
+                children: []
+            },
+            {
+                path: 'container/node',
+                name: 'Container',
+                component: () => import('@/views/container/Node.vue'),
+                meta: {
+                    title: "节点池",
+                    module: "容器管理"
+                },
+                children: []
+            },
+            {
+                path: 'container/podLogs',
+                name: 'PodLogs',
+                component: () => import('@/views/container/PodLogs.vue'),
+                meta: {
+                    title: "容器日志",
                     module: "容器管理"
                 },
                 children: []

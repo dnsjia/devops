@@ -16,7 +16,6 @@
         <a-tag color="red">{{deployData.deploy_type}}</a-tag>
       </template>
 
-
       <template slot="extra">
         <a-button v-show="deployData.status===1" key="1" type="primary" icon="audit" @click="agree">同意</a-button>
         <a-button v-show="deployData.status===1" key="2" type="danger" icon="issues-close" @click="refuse">拒绝</a-button>
@@ -51,7 +50,7 @@
             <a-descriptions size="small" :column="2">
               <a-descriptions-item label="任务编号">{{ deployData.task_id }}</a-descriptions-item>
               <a-descriptions-item label="测试报告">
-                  <a @click="openTestReport(testreporturl + deployData.test_report)"  :title="deployData.original_file_name">预览</a>
+                  <a @click="openTestReport(this.ENV.testReportURL + deployData.test_report)"  :title="deployData.original_file_name">预览</a>
               </a-descriptions-item>
               <a-descriptions-item label="申请标题">{{ deployData.title }}</a-descriptions-item>
               <a-descriptions-item label="期待时间">{{ deployData.online_time | fmtTime }}</a-descriptions-item>
@@ -88,7 +87,6 @@ export default {
     inject: ['reload'],
     data() {
       return {
-        testreporturl: '',
         // 日志按钮开关
         openLogs1: false,
         closeLogs1: true,
@@ -118,7 +116,6 @@ export default {
       const deploy = await deployDetail({"queryId": this.$route.query.id,}).then((res) => {
         if (res.results){
           this.deployData = res['results'][0];
-          this.testreporturl = this.ENV.testReportURL
           this.loading = false
           if (res.results[0].status === 3){
             this.deployLoading = true;
@@ -271,7 +268,7 @@ export default {
       },
       openTestReport(previewUrl){
         //previewUrl 要预览文件的访问地址
-        window.open(this.ENV.previewServerURL + '/onlinePreview?url=' + encodeURIComponent(previewUrl));
+        window.open(this.ENV.previewServerURL + '/onlinePreview?url='+encodeURIComponent(previewUrl));
       }
     }
 }

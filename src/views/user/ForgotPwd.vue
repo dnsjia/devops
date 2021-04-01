@@ -33,8 +33,6 @@
 
               <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }"></a-form-model-item>
 
-<!--              <a id="verifySmgBtn" @click="SendCode()" :disabled=sendCodeDisable>{{ sendCodeMsg }}</a>-->
-
               <a-button type="primary" @click="CodeSubmit('ruleForm')" :disabled=nextSendCodeDisable>下一步,验证</a-button>
 
         </a-form-model>
@@ -159,7 +157,6 @@ export default {
       e.preventDefault();
       this.form.validateFields(async (err, values) => {
         if (!err) {
-          //console.log(values)
           const resp = forgotPwd(values).then((_data) => {
             if (_data.data.is_email_exits === "true") {
               this.current = 1
@@ -182,13 +179,13 @@ export default {
         //获取验证码按钮倒计时功能的实现
         const _this = this;//！！坑！setInterval中的this指向问题
         _this.flag = true; //！按钮不可重复点击
-        var time = 60; //定义时间变量 60s
-        var timer = null; //定义定时器
+        var time = 60;//定义时间变量 60s
+        var timer = null;//定义定时器
         timer = setInterval(function(){
           if (time == 0){
             _this.sendCodeMsg = "重新获取验证码";
             _this.flag = false;
-            clearInterval(timer); //清除定时器
+            clearInterval(timer);//清除定时器
             _this.nextSendCodeDisable = true
             _this.sendCodeDisable = false
           } else {
@@ -219,7 +216,6 @@ export default {
             }
           })
         } else {
-          //console.log('error submit!!');
           return false;
         }
       });

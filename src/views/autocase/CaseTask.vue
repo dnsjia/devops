@@ -50,7 +50,6 @@
         <div id="appMain">
         　　<div v-html="$options.filters.logFilter(logs.logs)"></div>
         </div>
-<!--        {{ logs.logs | logFilter | logFilterStatus }}-->
       </div>
       <div
         :style="{
@@ -65,7 +64,6 @@
           borderRadius: '0 0 4px 4px',
         }"
       >
-
       </div>
     </a-drawer>
   </div>
