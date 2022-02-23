@@ -2,7 +2,7 @@
 <div>
   <a-layout id="layout" style="min-height: 100vh">
     <a-layout-sider v-model="collapsed" collapsible>
-      <div class="logo"  title="运维平台">{{ collapsed ? '' : + this.ENV.Title }}</div>
+      <div class="logo"  title="运维平台">{{ collapsed ? '' : + this.title }}</div>
         <a-menu theme="dark" :defaultOpenKeys="openKeys" :default-selected-keys="selectedKeys" mode="inline">
 
         <a-menu-item key="dashboard">
@@ -101,6 +101,7 @@
 import {mapGetters} from "vuex";
 import {MenuTree} from '@/api/premission'
 import {changePassWord} from '@/api/user'
+import title from '../store/env'
 export default {
   data() {
     const validatePass = (rule, value, callback) => {
